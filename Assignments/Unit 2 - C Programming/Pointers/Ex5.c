@@ -20,9 +20,11 @@ int main()
 	struct employee(*arr[])={&emp1,&emp2,&emp3};
 	struct employee(*(*ptr)[3])=&arr;
 	printf("employer two name is: %s \n",(**(*ptr+1)).name);
+	printf("employer two ID is: %d\n",(**(*ptr+1)).ID);
 	printf("employer three name is: %s\n",(**(*ptr+2)).name);
+	printf("employer three ID is: %d\n",(**(*ptr+2)).ID);
 	printf("employer one name is: %s\n",(**(*ptr)).name);
-
+	printf("employer one ID is: %d\n",(**(*ptr)).ID);
 
 	return 0;
 }
