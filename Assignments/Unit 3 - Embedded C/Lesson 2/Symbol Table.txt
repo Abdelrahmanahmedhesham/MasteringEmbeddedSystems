@@ -1,0 +1,7 @@
+00010068 T main
+00010000 T reset
+0001114c D stack_top
+00010008 t stop
+00010010 T Uart_sendstr
+000100e8 D x
+00010084 T x2
