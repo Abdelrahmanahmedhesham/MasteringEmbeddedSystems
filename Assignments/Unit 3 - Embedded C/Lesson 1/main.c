@@ -61,7 +61,7 @@ typedef union {
 		vuint32_t pin30:1;
 		vuint32_t pin31:1;
 
-	};
+	}pins;
 }R_ODR_t;
 
 volatile R_ODR_t* R_ODR = (volatile R_ODR_t*)(PORTA_BASE + 0x0C);
@@ -73,9 +73,9 @@ int main(void)
 	GPIO_PA_CRH |= 0x00200000;
 	while(1)
 	{
-		R_ODR->pin13=1;
+		R_ODR->pins.pin13=1;
 		for(int i=0;i<5000;i++);
-		R_ODR->pin13=0;
+		R_ODR->pins.pin13=0;
 		for(int i=0;i<5000;i++);
 	}
 	return 0;
