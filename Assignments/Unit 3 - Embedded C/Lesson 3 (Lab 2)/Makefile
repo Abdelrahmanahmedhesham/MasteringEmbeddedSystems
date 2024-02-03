@@ -1,21 +1,18 @@
 CC=arm-none-eabi-
-FLAGS=-g mcpu=arm926ej-s
+FLAGS=-mcpu=cortex-m3 -gdwarf-2
 INCS=-I .
 LIBS=
 SRC=$(wildcard *.c)
-OBJ=$(SRC.c=.o)
+OBJ=$(SRC:.c=.o)
 AS=$(wildcard *.s)
-ASOBJ=$(AS.s=.o)
-project name=learn_in_depth
+ASOBJ=$(AS:.s=.o)
+project name=learn_in_depth_cortex_m3
 
 
 
 all: $(project name).bin
 	@echo "=======Build is Done========"
 
-startup.o: startup.s
-	$(CC)as.exe $(FLAGS) %< -o $@
-	
 %.o: %.c
 	$(CC)gcc.exe -c $(FLAGS) $(INCS) $< -o $@
 	
@@ -26,7 +23,7 @@ $(project name).bin: $(project name).elf
 	$(CC)objcopy.exe -O binary $< $@
 	
 clean_all:
-	rm *.elf *.bin *.o
+	rm -rf *.elf *.bin *.o
 
 clean:
-	rm *.elf *.bin
+	rm -rf *.elf *.bin
